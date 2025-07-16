@@ -39,10 +39,13 @@ body {
 
 .lottery-name {
     margin: 0;
+    color: var(--text-text_brand, #1976D2);
+    /* header-01 */
+    font-family: var(--header-01-font-family, "Proxima Nova");
+    font-size: var(--header-01-font-size, 16px);
+    font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    color: #1976D2;
+    line-height: var(--header-01-line-height, 24px); /* 150% */
 }
 
 .order-id {
