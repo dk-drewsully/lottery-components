@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DraftKings Lottery Components</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        
+        // Order Tracking Component - Clean semantic structure
+        function OrderTrackingCard() {
+            return (
+                <div className="order-card">
+                    {/* Header */}
+                    <div className="card-header">
+                        <h3 className="lottery-name">Mega Millions</h3>
+                        <div className="order-id">DS78DR</div>
+                    </div>
+                    
+                    {/* Order Details */}
+                    <div className="order-details">
+                        <div className="detail-row">
+                            <span className="label">Ordered:</span>
+                            <span className="value">May 2, 2024</span>
+                        </div>
+                        <div className="detail-row">
+                            <span className="label">Total:</span>
+                            <span className="value">$8.00</span>
+                            <span className="plays">(4 Plays)</span>
+                        </div>
+                    </div>
+                    
+                    {/* Status */}
+                    <div className="status-section">
+                        <div className="status-row">
+                            <div className="status-icon">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <circle cx="6" cy="6" r="6" fill="#1976D2"/>
+                                    <path d="M3.5 6L5.5 8L8.5 4.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </div>
+                            <span className="status-text">Order received</span>
+                        </div>
+                        <div className="progress-bar">
+                            <div className="progress-segment active"></div>
+                            <div className="progress-segment"></div>
+                            <div className="progress-segment"></div>
+                        </div>
+                    </div>
+                    
+                    {/* Actions */}
+                    <div className="action-buttons">
+                        <button className="action-btn">Details</button>
+                        <div className="button-divider"></div>
+                        <button className="action-btn">Play More</button>
+                    </div>
+                </div>
+            );
+        }
+        
+        // This is where we'll build your Figma designs into React components
+        function App() {
+            return (
+                <div>
+                    <h1>🎰 DraftKings Lottery Components</h1>
+                    <p>Ready to convert your Figma designs into React components!</p>
+                    
+                    <div className="design-reference">
+                        <h2>📋 Design Reference</h2>
+                        <p>Paste your Figma link or describe your design here:</p>
+                        <div className="figma-link">
+                            <strong>Figma Link:</strong> [Paste your Figma design link here]
+                        </div>
+                        <p><em>You can also describe the component you want to build, and I'll help you code it step by step.</em></p>
+                    </div>
+                    
+                    <div className="component-playground">
+                        <h2>🏗️ Component Playground</h2>
+                        <p>Your components will appear here as we build them together.</p>
+                        
+                        {/* Your Order Tracking Component */}
+                        <OrderTrackingCard />
+                        
+                        <div style={{
+                            background: '#f8f9fa',
+                            padding: '20px',
+                            borderRadius: '8px',
+                            marginTop: '20px',
+                            fontSize: '14px'
+                        }}>
+                            <strong>🎉 Component Complete!</strong> You've built a pixel-perfect lottery order tracking card from your Figma design.
+                            <br/><br/>
+                            <strong>Next steps:</strong> Add interactivity (button clicks, state changes) or create more components!
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html> 
