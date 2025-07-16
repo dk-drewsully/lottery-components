@@ -22,19 +22,21 @@ body {
 @keyframes meshFadeInOut {
     0%, 100% {
         background-image: 
-            /* Dim state */
-            linear-gradient(0deg, transparent 23%, rgba(0, 140, 255, 0.15) 24%, rgba(0, 140, 255, 0.25) 25%, rgba(0, 140, 255, 0.15) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.15) 74%, rgba(0, 140, 255, 0.25) 75%, rgba(0, 140, 255, 0.15) 76%, transparent 77%),
-            linear-gradient(90deg, transparent 23%, rgba(0, 140, 255, 0.15) 24%, rgba(0, 140, 255, 0.25) 25%, rgba(0, 140, 255, 0.15) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.15) 74%, rgba(0, 140, 255, 0.25) 75%, rgba(0, 140, 255, 0.15) 76%, transparent 77%),
-            linear-gradient(0deg, transparent 22%, rgba(0, 140, 255, 0.05) 25%, transparent 28%, transparent 72%, rgba(0, 140, 255, 0.05) 75%, transparent 78%),
-            linear-gradient(90deg, transparent 22%, rgba(0, 140, 255, 0.05) 25%, transparent 28%, transparent 72%, rgba(0, 140, 255, 0.05) 75%, transparent 78%);
+            /* Dim state - more visible */
+            linear-gradient(0deg, transparent 23%, rgba(0, 140, 255, 0.3) 24%, rgba(0, 140, 255, 0.5) 25%, rgba(0, 140, 255, 0.3) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.3) 74%, rgba(0, 140, 255, 0.5) 75%, rgba(0, 140, 255, 0.3) 76%, transparent 77%),
+            linear-gradient(90deg, transparent 23%, rgba(0, 140, 255, 0.3) 24%, rgba(0, 140, 255, 0.5) 25%, rgba(0, 140, 255, 0.3) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.3) 74%, rgba(0, 140, 255, 0.5) 75%, rgba(0, 140, 255, 0.3) 76%, transparent 77%),
+            /* Visible outer glow */
+            linear-gradient(0deg, transparent 20%, rgba(0, 140, 255, 0.15) 25%, transparent 30%, transparent 70%, rgba(0, 140, 255, 0.15) 75%, transparent 80%),
+            linear-gradient(90deg, transparent 20%, rgba(0, 140, 255, 0.15) 25%, transparent 30%, transparent 70%, rgba(0, 140, 255, 0.15) 75%, transparent 80%);
     }
     50% {
         background-image: 
-            /* Bright electric state */
-            linear-gradient(0deg, transparent 23%, rgba(0, 140, 255, 0.7) 24%, rgba(0, 140, 255, 0.9) 25%, rgba(0, 140, 255, 0.7) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.7) 74%, rgba(0, 140, 255, 0.9) 75%, rgba(0, 140, 255, 0.7) 76%, transparent 77%),
-            linear-gradient(90deg, transparent 23%, rgba(0, 140, 255, 0.7) 24%, rgba(0, 140, 255, 0.9) 25%, rgba(0, 140, 255, 0.7) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.7) 74%, rgba(0, 140, 255, 0.9) 75%, rgba(0, 140, 255, 0.7) 76%, transparent 77%),
-            linear-gradient(0deg, transparent 22%, rgba(0, 140, 255, 0.2) 25%, transparent 28%, transparent 72%, rgba(0, 140, 255, 0.2) 75%, transparent 78%),
-            linear-gradient(90deg, transparent 22%, rgba(0, 140, 255, 0.2) 25%, transparent 28%, transparent 72%, rgba(0, 140, 255, 0.2) 75%, transparent 78%);
+            /* BLAZING electric state */
+            linear-gradient(0deg, transparent 23%, rgba(0, 140, 255, 0.8) 24%, rgba(0, 140, 255, 1.0) 25%, rgba(0, 140, 255, 0.8) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.8) 74%, rgba(0, 140, 255, 1.0) 75%, rgba(0, 140, 255, 0.8) 76%, transparent 77%),
+            linear-gradient(90deg, transparent 23%, rgba(0, 140, 255, 0.8) 24%, rgba(0, 140, 255, 1.0) 25%, rgba(0, 140, 255, 0.8) 26%, transparent 27%, transparent 73%, rgba(0, 140, 255, 0.8) 74%, rgba(0, 140, 255, 1.0) 75%, rgba(0, 140, 255, 0.8) 76%, transparent 77%),
+            /* Intense outer glow */
+            linear-gradient(0deg, transparent 20%, rgba(0, 140, 255, 0.4) 25%, transparent 30%, transparent 70%, rgba(0, 140, 255, 0.4) 75%, transparent 80%),
+            linear-gradient(90deg, transparent 20%, rgba(0, 140, 255, 0.4) 25%, transparent 30%, transparent 70%, rgba(0, 140, 255, 0.4) 75%, transparent 80%);
     }
 }
 
