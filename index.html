@@ -71,27 +71,9 @@
         function App() {
             return (
                 <div>
-                    <h1 style={{textAlign: 'center', color: 'white', marginBottom: '40px'}}>🎰 DraftKings Lottery Components</h1>
+                    <h1 style={{textAlign: 'center', color: 'white', marginBottom: '40px'}}>Order Status</h1>
                     
-                    <div className="component-playground">
-                        <h2>🏗️ Component Playground</h2>
-                        <p>Your components will appear here as we build them together.</p>
-                        
-                        {/* Your Order Tracking Component */}
-                        <OrderTrackingCard />
-                        
-                        <div style={{
-                            background: '#f8f9fa',
-                            padding: '20px',
-                            borderRadius: '8px',
-                            marginTop: '20px',
-                            fontSize: '14px'
-                        }}>
-                            <strong>🎉 Component Complete!</strong> You've built a pixel-perfect lottery order tracking card from your Figma design.
-                            <br/><br/>
-                            <strong>Next steps:</strong> Add interactivity (button clicks, state changes) or create more components!
-                        </div>
-                    </div>
+                    <OrderTrackingCard />
                 </div>
             );
         }
