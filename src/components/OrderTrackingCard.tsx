@@ -113,7 +113,7 @@ export const OrderTrackingCard: React.FC<OrderTrackingCardProps> = ({
           </div>
           <span className="status-text">{order.status.message}</span>
         </div>
-        <div className="progress-bar">
+        <div className="progress-bar" data-progress={order.status.progress}>
           {getProgressSegments()}
         </div>
       </div>
