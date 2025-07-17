@@ -19,7 +19,7 @@ const sampleOrders: LotteryOrder[] = [
   },
   {
     id: 'AB12CD',
-    lotteryName: 'Powerball',
+    lotteryName: 'Mega Millions',
     orderDate: '2024-05-01',
     totalAmount: 12.00,
     numberOfPlays: 6,
