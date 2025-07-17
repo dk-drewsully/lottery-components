@@ -8,7 +8,7 @@ export interface LotteryOrder {
 }
 
 export interface OrderStatus {
-  stage: 'received' | 'ready_to_view' | 'getting_results' | 'processing' | 'confirmed' | 'completed';
+  stage: 'received' | 'ready_to_view' | 'getting_results';
   message: string;
   progress: number; // 0-100
 }
