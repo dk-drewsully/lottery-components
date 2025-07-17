@@ -1,4 +1,3 @@
-import React from 'react';
 import { OrderTrackingCard } from './components/OrderTrackingCard';
 import { LotteryOrder } from './types/lottery';
 import './App.css';
