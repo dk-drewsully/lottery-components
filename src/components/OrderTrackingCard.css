@@ -141,53 +141,71 @@
     background: var(--color-progress-active);
 }
 
-/* Continuous sheen effect using design system colors */
+/* Single clean sheen effect that moves across filled segments */
 .progress-bar::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -30px;
     height: 100%;
-    width: 100%;
+    width: 25px;
     background: linear-gradient(
         90deg,
-        transparent 0%,
-        transparent 20%,
-        rgba(255, 255, 255, 0.3) 40%,
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0.3) 60%,
-        transparent 80%,
-        transparent 100%
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
     );
-    background-size: 50px 100%;
-    background-position: -60px 0;
     border-radius: var(--radius-sm);
-    animation: continuous-shimmer 2.5s infinite ease-in-out;
+    animation: continuous-shimmer 2s infinite ease-in-out;
     pointer-events: none;
     z-index: var(--z-overlay);
 }
 
-/* Shimmer clipping for different progress states - only show on filled segments */
+/* Shimmer masking for different progress states - only visible on filled segments */
 .progress-bar[data-progress="33"]::before {
-    clip-path: polygon(0% 0%, 33.33% 0%, 33.33% 100%, 0% 100%);
+    /* First segment only */
+    mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
 }
 
 .progress-bar[data-progress="66"]::before,
 .progress-bar[data-progress="67"]::before {
-    clip-path: polygon(0% 0%, 66.67% 0%, 66.67% 100%, 0% 100%);
+    /* First and second segments with gap */
+    mask: linear-gradient(90deg, 
+        white 0%, white 30.5%, 
+        transparent 30.5%, transparent 34.75%, 
+        white 34.75%, white 65.25%, 
+        transparent 65.25%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, white 30.5%, 
+        transparent 30.5%, transparent 34.75%, 
+        white 34.75%, white 65.25%, 
+        transparent 65.25%, transparent 100%);
 }
 
 .progress-bar[data-progress="90"]::before,
 .progress-bar[data-progress="100"]::before {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    /* All three segments with gaps */
+    mask: linear-gradient(90deg, 
+        white 0%, white 30.5%, 
+        transparent 30.5%, transparent 34.75%, 
+        white 34.75%, white 65.25%, 
+        transparent 65.25%, transparent 69.5%, 
+        white 69.5%, white 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, white 30.5%, 
+        transparent 30.5%, transparent 34.75%, 
+        white 34.75%, white 65.25%, 
+        transparent 65.25%, transparent 69.5%, 
+        white 69.5%, white 100%);
 }
 
 @keyframes continuous-shimmer {
     0% { 
-        background-position: -60px 0;
+        left: -30px;
     }
     100% { 
-        background-position: calc(100% + 10px) 0;
+        left: calc(100% + 10px);
     }
 }
 
