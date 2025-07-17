@@ -1,49 +1,57 @@
-/* Order Card Styles */
+/* =============================================================================
+   ORDER TRACKING CARD COMPONENT
+   Using design system tokens for consistent, maintainable styling
+   ============================================================================= */
+
+/* Main Card Container */
 .order-card {
     display: flex;
     flex-direction: column;
     width: 343px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
-    margin: 20px auto;
+    background: var(--color-bg-primary);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-xl) auto;
     overflow: hidden;
-    font-family: 'Proxima Nova', sans-serif;
+    font-family: var(--font-family-primary);
 }
 
+/* Header Section */
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 12px 16px 8px;
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-sm);
 }
 
 .lottery-name {
     margin: 0;
-    color: var(--text-text_brand, #1976D2);
-    /* header-01 */
-    font-family: var(--header-01-font-family, "Proxima Nova");
-    font-size: var(--header-01-font-size, 16px);
+    color: var(--color-text-brand);
+    /* Uses design system typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--text-header-01-size);
     font-style: normal;
-    font-weight: 700;
-    line-height: var(--header-01-line-height, 24px); /* 150% */
+    font-weight: var(--text-header-01-weight);
+    line-height: var(--text-header-01-line-height);
 }
 
 .order-id {
-    font-size: 14px;
-    color: #63707B;
+    font-size: var(--text-body-02-size);
+    color: var(--color-text-secondary);
+    font-weight: var(--text-body-02-weight);
 }
 
+/* Order Details Section */
 .order-details {
-    padding: 0 16px 12px;
-    border-bottom: 1px solid #E7EDF2;
+    padding: 0 var(--spacing-lg) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border-default);
 }
 
 .detail-row {
     display: flex;
     align-items: center;
-    gap: 4px;
-    margin-bottom: 4px;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
 }
 
 .detail-row:last-child {
@@ -51,42 +59,42 @@
 }
 
 .label {
-    color: var(--text-text_subdued, #63707B);
-    
-    /* body-02 */
-    font-family: var(--body-02-font-family, "Proxima Nova");
-    font-size: var(--body-02-font-size, 14px);
+    color: var(--color-text-secondary);
+    /* Uses design system typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--text-body-02-size);
     font-style: normal;
-    font-weight: 400;
-    line-height: var(--body-02-line-height, 20px); /* 142.857% */
+    font-weight: var(--text-body-02-weight);
+    line-height: var(--text-body-02-line-height);
 }
 
 .value {
-    color: var(--text-text_default, #131415);
-    
-    /* body-02 */
-    font-family: var(--body-02-font-family, "Proxima Nova");
-    font-size: var(--body-02-font-size, 14px);
+    color: var(--color-text-primary);
+    /* Uses design system typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--text-body-02-size);
     font-style: normal;
-    font-weight: 400;
-    line-height: var(--body-02-line-height, 20px); /* 142.857% */
+    font-weight: var(--text-body-02-weight);
+    line-height: var(--text-body-02-line-height);
 }
 
 .plays {
-    font-size: 14px;
-    color: #79818B;
+    font-size: var(--text-body-02-size);
+    color: var(--color-text-subdued);
+    font-weight: var(--text-body-02-weight);
 }
 
+/* Status Section */
 .status-section {
-    padding: 12px 16px 16px;
-    border-bottom: 1px solid #E7EDF2;
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border-default);
 }
 
 .status-row {
     display: flex;
     align-items: center;
-    gap: 4px;
-    margin-bottom: 8px;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .status-icon {
@@ -96,55 +104,43 @@
 }
 
 .status-icon svg {
-    transition: transform 0.2s ease;
+    transition: transform var(--transition-normal);
 }
 
-/* Sparkle animation for getting_results state */
+/* Enhanced sparkle animation for getting_results state */
 .status-icon svg[data-state="getting_results"] {
     animation: sparkle 2s ease-in-out infinite;
 }
 
-@keyframes sparkle {
-    0%, 100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1) rotate(180deg);
-        opacity: 0.8;
-    }
-}
-
 .status-text {
-    color: #1976D2;
-    
-    /* emphasis-02 */
-    font-family: var(--emphasis-02-font-family, "Proxima Nova");
-    font-size: var(--emphasis-02-font-size, 14px);
+    color: var(--color-text-brand);
+    /* Uses design system typography */
+    font-family: var(--font-family-primary);
+    font-size: var(--text-emphasis-02-size);
     font-style: normal;
-    font-weight: 700;
-    line-height: var(--emphasis-02-line-height, 20px); /* 142.857% */
+    font-weight: var(--text-emphasis-02-weight);
+    line-height: var(--text-emphasis-02-line-height);
 }
 
+/* Progress Bar - Enhanced with Design System */
 .progress-bar {
     display: flex;
-    gap: 4px;
-    height: 4px;
+    gap: var(--spacing-xs);
+    height: var(--spacing-xs);
     position: relative;
 }
 
 .progress-segment {
     flex: 1;
-    background: #D7DEE1;
-    border-radius: 4px;
+    background: var(--color-progress-inactive);
+    border-radius: var(--radius-sm);
 }
 
 .progress-segment.active {
-    background: #1976D2;
-    border-radius: 4px;
+    background: var(--color-progress-active);
 }
 
-/* Continuous sheen effect across all filled segments */
+/* Continuous sheen effect using design system colors */
 .progress-bar::before {
     content: '';
     position: absolute;
@@ -154,16 +150,16 @@
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.6),
+        var(--color-progress-shimmer),
         transparent
     );
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     animation: continuous-shimmer 2s infinite;
     pointer-events: none;
-    z-index: 1;
+    z-index: var(--z-overlay);
 }
 
-/* Calculate width based on filled segments */
+/* Calculate width based on filled segments using design system spacing */
 .progress-bar[data-progress="33"]::before {
     width: calc(33.33% - 1.33px); /* Account for gaps */
 }
@@ -177,14 +173,11 @@
 }
 
 @keyframes continuous-shimmer {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
+/* Action Buttons Section */
 .action-buttons {
     display: flex;
     height: 52px;
@@ -197,23 +190,99 @@
     align-items: center;
     background: transparent;
     border: none;
-    color: #1565C0;
-    font-family: 'Proxima Nova', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
+    color: var(--color-text-brand);
+    font-family: var(--font-family-primary);
+    font-size: var(--text-body-02-size);
+    font-weight: var(--text-emphasis-02-weight);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color var(--transition-normal);
 }
 
 .action-btn:hover {
-    background: rgba(21, 101, 192, 0.04);
+    background: var(--color-bg-overlay);
 }
 
 .action-btn:active {
     background: rgba(21, 101, 192, 0.08);
 }
 
+.action-btn:focus-visible {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 2px;
+}
+
 .button-divider {
     width: 1px;
-    background: #E7EDF2;
+    background: var(--color-border-default);
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   Mobile-optimized adjustments using design system breakpoints
+   ============================================================================= */
+
+@media (max-width: 480px) {
+    .order-card {
+        width: calc(100% - calc(var(--spacing-lg) * 2));
+        margin: var(--spacing-lg);
+    }
+    
+    .card-header {
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xs);
+    }
+    
+    .order-details {
+        padding: 0 var(--spacing-md) var(--spacing-sm);
+    }
+    
+    .status-section {
+        padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    }
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   Enhanced accessibility following design system patterns
+   ============================================================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .progress-segment.active {
+        background: #000000;
+    }
+    
+    .status-text {
+        color: #000000;
+    }
+    
+    .lottery-name {
+        color: #000000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .status-icon svg,
+    .progress-bar::before,
+    .action-btn {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Focus management for better keyboard navigation */
+.order-card:focus-within {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Print styles */
+@media print {
+    .order-card {
+        box-shadow: none;
+        border: 1px solid var(--color-border-default);
+    }
+    
+    .action-buttons {
+        display: none;
+    }
 } 

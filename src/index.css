@@ -1,4 +1,12 @@
-/* Essential global styles for the lottery component demo */
+/* =============================================================================
+   GLOBAL STYLES - LOTTERY COMPONENTS
+   Professional baseline styles for designer-developer handoffs
+   ============================================================================= */
+
+/* Import Design System */
+@import './styles/design-system.css';
+
+/* Essential global reset and baseline styles */
 * {
   box-sizing: border-box;
 }
@@ -8,11 +16,98 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', roboto, sans-serif;
+  font-family: var(--font-family-system);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  
+  /* Enhanced text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #root {
   width: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* =============================================================================
+   ENHANCED ACCESSIBILITY
+   Professional accessibility support for all users
+   ============================================================================= */
+
+/* Focus management */
+*:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =============================================================================
+   DEVELOPMENT & DESIGN HANDOFF UTILITIES
+   Helpful classes for prototyping and handoffs
+   ============================================================================= */
+
+/* Debug mode - uncomment for development */
+/*
+.debug * {
+  outline: 1px solid rgba(255, 0, 0, 0.3);
+}
+*/
+
+/* Component boundaries for handoff documentation */
+.component-boundary {
+  border: 2px dashed rgba(0, 122, 255, 0.3);
+  padding: var(--spacing-sm);
+  margin: var(--spacing-sm);
+}
+
+/* Placeholder content styles */
+.placeholder {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-style: italic;
+}
+
+/* =============================================================================
+   PRINT OPTIMIZATION
+   Professional print styles
+   ============================================================================= */
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
 } 
