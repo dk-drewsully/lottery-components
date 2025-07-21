@@ -40,7 +40,7 @@ const orderStates: Record<string, LotteryOrder> = {
 };
 
 function App() {
-  const [currentState, setCurrentState] = useState<'received' | 'ready_to_view' | 'getting_results'>('getting_results');
+  const [currentState, setCurrentState] = useState<'received' | 'ready_to_view' | 'getting_results'>('received');
 
   const handleDetailsClick = (orderId: string) => {
     console.log('Details clicked for order:', orderId);
