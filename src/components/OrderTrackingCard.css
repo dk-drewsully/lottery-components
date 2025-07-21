@@ -141,8 +141,8 @@
     background: var(--color-progress-active);
 }
 
-/* Single clean sheen effect on active segments only */
-.progress-segment.active::before {
+/* Single sheen effect that spans across all active segments */
+.progress-bar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -158,18 +158,63 @@
         transparent
     );
     border-radius: var(--radius-sm);
-    animation: continuous-shimmer 2s infinite ease-in-out;
     pointer-events: none;
     z-index: var(--z-overlay);
+    /* No default animation - each progress state defines its own */
 }
 
-/* Position adjustment for active segments to support sheen animation */
-.progress-segment.active {
-    position: relative;
-    overflow: hidden;
+/* Sheen masking and animation based on number of active segments */
+.progress-bar[data-progress="33"]::before {
+    /* Mask to span only the first segment and use specific animation */
+    mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
+    animation: shimmer-33 2s infinite ease-in-out;
 }
 
+.progress-bar[data-progress="66"]::before {
+    /* Mask to span first and second segments and use specific animation */
+    mask: linear-gradient(90deg, white 0%, white 65.25%, transparent 65.25%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, white 0%, white 65.25%, transparent 65.25%, transparent 100%);
+    animation: shimmer-66 2s infinite ease-in-out;
+}
+
+.progress-bar[data-progress="100"]::before {
+    /* Mask to span all three segments and use specific animation */
+    mask: linear-gradient(90deg, white 0%, white 100%);
+    -webkit-mask: linear-gradient(90deg, white 0%, white 100%);
+    animation: shimmer-100 2s infinite ease-in-out;
+}
+
+/* Base shimmer animation - travels across full container */
 @keyframes continuous-shimmer {
+    0% { 
+        left: -40px;
+    }
+    100% { 
+        left: calc(100% + 10px);
+    }
+}
+
+/* Segment-specific animations that travel only across active segments */
+@keyframes shimmer-33 {
+    0% { 
+        left: -40px;
+    }
+    100% { 
+        left: calc(30.5% + 10px);
+    }
+}
+
+@keyframes shimmer-66 {
+    0% { 
+        left: -40px;
+    }
+    100% { 
+        left: calc(65.25% + 10px);
+    }
+}
+
+@keyframes shimmer-100 {
     0% { 
         left: -40px;
     }
