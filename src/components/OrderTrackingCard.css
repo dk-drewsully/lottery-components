@@ -141,7 +141,7 @@
     background: var(--color-progress-active);
 }
 
-/* Single smooth sheen effect that spans across all active segments */
+/* Single smooth sheen effect that only appears on active segments */
 .progress-bar::before {
     content: '';
     position: absolute;
@@ -166,31 +166,81 @@
     display: none;
 }
 
-/* Simple and precise sheen for each progress state */
+/* Precise masking to only show sheen on active segments */
 .progress-bar[data-progress="33"]::before {
-    /* Show sheen and limit it to first segment only */
+    /* Show sheen only on first segment */
     display: block;
-    width: 30%;  /* Slightly less than 33% to avoid gaps */
+    /* Mask to exactly match first segment: 0% to calc((100% - 8px) / 3) */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent 100%);
     animation: shimmer-33 2.5s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="66"]::before {
-    /* Show sheen and limit it to first two segments */
+    /* Show sheen only on first and second segments */
     display: block;
-    width: 63%;  /* Slightly less than 66% to avoid third segment */
+    /* Mask to match first segment + gap + second segment */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3 + 4px), 
+        white calc((100% - 8px) / 3 + 4px), 
+        white calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3 + 4px), 
+        white calc((100% - 8px) / 3 + 4px), 
+        white calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent 100%);
     animation: shimmer-66 2.5s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="100"]::before {
-    /* Show sheen and span all three segments */
+    /* Show sheen on all three segments */
     display: block;
-    width: 100%;
+    /* Mask to match all three segments with gaps */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3 + 4px), 
+        white calc((100% - 8px) / 3 + 4px), 
+        white calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 8px), 
+        white calc(2 * (100% - 8px) / 3 + 8px), 
+        white 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3), 
+        transparent calc((100% - 8px) / 3 + 4px), 
+        white calc((100% - 8px) / 3 + 4px), 
+        white calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 4px), 
+        transparent calc(2 * (100% - 8px) / 3 + 8px), 
+        white calc(2 * (100% - 8px) / 3 + 8px), 
+        white 100%);
     animation: shimmer-100 2.5s infinite ease-in-out;
 }
 
 
 
-/* Smooth animations that travel across the exact width of active segments */
+/* Animations that travel across only the active segments */
 @keyframes shimmer-33 {
     0% { 
         left: -60px;
@@ -203,7 +253,8 @@
         opacity: 1;
     }
     100% { 
-        left: calc(30% + 30px);
+        /* End at the end of first segment */
+        left: calc((100% - 8px) / 3 + 30px);
         opacity: 0;
     }
 }
@@ -220,7 +271,8 @@
         opacity: 1;
     }
     100% { 
-        left: calc(63% + 30px);
+        /* End at the end of second segment */
+        left: calc(2 * (100% - 8px) / 3 + 4px + 30px);
         opacity: 0;
     }
 }
@@ -237,6 +289,7 @@
         opacity: 1;
     }
     100% { 
+        /* End at the end of third segment */
         left: calc(100% + 30px);
         opacity: 0;
     }
