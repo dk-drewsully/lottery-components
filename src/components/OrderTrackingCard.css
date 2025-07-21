@@ -141,12 +141,12 @@
     background: var(--color-progress-active);
 }
 
-/* Single clean sheen effect that moves across filled segments */
-.progress-bar::before {
+/* Single clean sheen effect on active segments only */
+.progress-segment.active::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -50px;
+    left: -40px;
     height: 100%;
     width: 40px;
     background: linear-gradient(
@@ -161,53 +161,17 @@
     animation: continuous-shimmer 2s infinite ease-in-out;
     pointer-events: none;
     z-index: var(--z-overlay);
-    /* Hide sheen by default - only show on specific progress states */
-    display: none;
 }
 
-/* Shimmer visibility and masking for specific progress states only */
-.progress-bar[data-progress="33"]::before {
-    /* Show sheen and mask to first segment only */
-    display: block;
-    mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
-    -webkit-mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
-}
-
-.progress-bar[data-progress="66"]::before {
-    /* Show sheen and mask to first and second segments with gap */
-    display: block;
-    mask: linear-gradient(90deg, 
-        white 0%, white 30.5%, 
-        transparent 30.5%, transparent 34.75%, 
-        white 34.75%, white 65.25%, 
-        transparent 65.25%, transparent 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, white 30.5%, 
-        transparent 30.5%, transparent 34.75%, 
-        white 34.75%, white 65.25%, 
-        transparent 65.25%, transparent 100%);
-}
-
-.progress-bar[data-progress="100"]::before {
-    /* Show sheen and mask to all three segments with gaps */
-    display: block;
-    mask: linear-gradient(90deg, 
-        white 0%, white 30.5%, 
-        transparent 30.5%, transparent 34.75%, 
-        white 34.75%, white 65.25%, 
-        transparent 65.25%, transparent 69.5%, 
-        white 69.5%, white 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, white 30.5%, 
-        transparent 30.5%, transparent 34.75%, 
-        white 34.75%, white 65.25%, 
-        transparent 65.25%, transparent 69.5%, 
-        white 69.5%, white 100%);
+/* Position adjustment for active segments to support sheen animation */
+.progress-segment.active {
+    position: relative;
+    overflow: hidden;
 }
 
 @keyframes continuous-shimmer {
     0% { 
-        left: -50px;
+        left: -40px;
     }
     100% { 
         left: calc(100% + 10px);
