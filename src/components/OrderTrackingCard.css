@@ -214,6 +214,40 @@
     }
 }
 
+/* Sparkle animation for the getting results icon */
+.sparkle-icon {
+    animation: sparkle-glow 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes sparkle-glow {
+    0% { 
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+    25% {
+        opacity: 0.8;
+        transform: scale(1.1) rotate(5deg);
+        filter: brightness(1.3) drop-shadow(0 0 3px rgba(25, 118, 210, 0.6));
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(0deg);
+        filter: brightness(1.5) drop-shadow(0 0 5px rgba(25, 118, 210, 0.8));
+    }
+    75% {
+        opacity: 0.8;
+        transform: scale(1.1) rotate(-5deg);
+        filter: brightness(1.3) drop-shadow(0 0 3px rgba(25, 118, 210, 0.6));
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+}
+
 /* Action Buttons Section */
 .action-buttons {
     display: flex;
