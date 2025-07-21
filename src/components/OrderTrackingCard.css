@@ -141,129 +141,104 @@
     background: var(--color-progress-active);
 }
 
-/* Single sheen effect that spans across all active segments */
+/* Single smooth sheen effect that spans across all active segments */
 .progress-bar::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -40px;
+    left: -60px;
     height: 100%;
-    width: 40px;
+    width: 60px;
     background: linear-gradient(
         90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.4),
-        transparent
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.3) 40%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.3) 60%,
+        rgba(255, 255, 255, 0.1) 80%,
+        transparent 100%
     );
     border-radius: var(--radius-sm);
     pointer-events: none;
     z-index: var(--z-overlay);
-    /* No default animation - each progress state defines its own */
+    /* Hidden by default */
+    display: none;
 }
 
-/* Sheen masking and animation based on number of active segments - precise calculations */
+/* Simple and precise sheen for each progress state */
 .progress-bar[data-progress="33"]::before {
-    /* Mask to span only the first segment (avoiding gaps) */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent 100%);
-    animation: shimmer-33 2s infinite ease-in-out;
+    /* Show sheen and limit it to first segment only */
+    display: block;
+    width: 30%;  /* Slightly less than 33% to avoid gaps */
+    animation: shimmer-33 2.5s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="66"]::before {
-    /* Mask to span first and second segments only (avoiding gaps and third segment) */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent calc(33.333% + 1.333px), 
-        white calc(33.333% + 1.333px), 
-        white calc(66.667% - 1.333px), 
-        transparent calc(66.667% - 1.333px), 
-        transparent 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent calc(33.333% + 1.333px), 
-        white calc(33.333% + 1.333px), 
-        white calc(66.667% - 1.333px), 
-        transparent calc(66.667% - 1.333px), 
-        transparent 100%);
-    animation: shimmer-66 2s infinite ease-in-out;
+    /* Show sheen and limit it to first two segments */
+    display: block;
+    width: 63%;  /* Slightly less than 66% to avoid third segment */
+    animation: shimmer-66 2.5s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="100"]::before {
-    /* Mask to span all three segments only (avoiding gaps) */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent calc(33.333% + 1.333px), 
-        white calc(33.333% + 1.333px), 
-        white calc(66.667% - 1.333px), 
-        transparent calc(66.667% - 1.333px), 
-        transparent calc(66.667% + 2.667px), 
-        white calc(66.667% + 2.667px), 
-        white 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc(33.333% - 2.667px), 
-        transparent calc(33.333% - 2.667px), 
-        transparent calc(33.333% + 1.333px), 
-        white calc(33.333% + 1.333px), 
-        white calc(66.667% - 1.333px), 
-        transparent calc(66.667% - 1.333px), 
-        transparent calc(66.667% + 2.667px), 
-        white calc(66.667% + 2.667px), 
-        white 100%);
-    animation: shimmer-100 2s infinite ease-in-out;
+    /* Show sheen and span all three segments */
+    display: block;
+    width: 100%;
+    animation: shimmer-100 2.5s infinite ease-in-out;
 }
 
-/* Base shimmer animation - travels across full container */
-@keyframes continuous-shimmer {
-    0% { 
-        left: -40px;
-    }
-    100% { 
-        left: calc(100% + 10px);
-    }
-}
 
-/* Segment-specific animations that travel only across active segments */
+
+/* Smooth animations that travel across the exact width of active segments */
 @keyframes shimmer-33 {
     0% { 
-        left: -40px;
+        left: -60px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
     }
     100% { 
-        left: calc(33.333% - 2.667px + 10px);
+        left: calc(30% + 30px);
+        opacity: 0;
     }
 }
 
 @keyframes shimmer-66 {
     0% { 
-        left: -40px;
+        left: -60px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
     }
     100% { 
-        left: calc(66.667% - 1.333px + 10px);
+        left: calc(63% + 30px);
+        opacity: 0;
     }
 }
 
 @keyframes shimmer-100 {
     0% { 
-        left: -40px;
+        left: -60px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
     }
     100% { 
-        left: calc(100% + 10px);
+        left: calc(100% + 30px);
+        opacity: 0;
     }
 }
 
