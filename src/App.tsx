@@ -34,7 +34,7 @@ const orderStates: Record<string, LotteryOrder> = {
     status: {
       stage: 'getting_results',
       message: 'Getting drawing results...',
-      progress: 66
+      progress: 100
     }
   }
 };
