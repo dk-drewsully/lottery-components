@@ -163,25 +163,69 @@
     /* No default animation - each progress state defines its own */
 }
 
-/* Sheen masking and animation based on number of active segments */
+/* Sheen masking and animation based on number of active segments - precise calculations */
 .progress-bar[data-progress="33"]::before {
-    /* Mask to span only the first segment and use specific animation */
-    mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
-    -webkit-mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
+    /* Mask to span only the first segment (avoiding gaps) */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent 100%);
     animation: shimmer-33 2s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="66"]::before {
-    /* Mask to span first and second segments and use specific animation */
-    mask: linear-gradient(90deg, white 0%, white 65.25%, transparent 65.25%, transparent 100%);
-    -webkit-mask: linear-gradient(90deg, white 0%, white 65.25%, transparent 65.25%, transparent 100%);
+    /* Mask to span first and second segments only (avoiding gaps and third segment) */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent calc(33.333% + 1.333px), 
+        white calc(33.333% + 1.333px), 
+        white calc(66.667% - 1.333px), 
+        transparent calc(66.667% - 1.333px), 
+        transparent 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent calc(33.333% + 1.333px), 
+        white calc(33.333% + 1.333px), 
+        white calc(66.667% - 1.333px), 
+        transparent calc(66.667% - 1.333px), 
+        transparent 100%);
     animation: shimmer-66 2s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="100"]::before {
-    /* Mask to span all three segments and use specific animation */
-    mask: linear-gradient(90deg, white 0%, white 100%);
-    -webkit-mask: linear-gradient(90deg, white 0%, white 100%);
+    /* Mask to span all three segments only (avoiding gaps) */
+    mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent calc(33.333% + 1.333px), 
+        white calc(33.333% + 1.333px), 
+        white calc(66.667% - 1.333px), 
+        transparent calc(66.667% - 1.333px), 
+        transparent calc(66.667% + 2.667px), 
+        white calc(66.667% + 2.667px), 
+        white 100%);
+    -webkit-mask: linear-gradient(90deg, 
+        white 0%, 
+        white calc(33.333% - 2.667px), 
+        transparent calc(33.333% - 2.667px), 
+        transparent calc(33.333% + 1.333px), 
+        white calc(33.333% + 1.333px), 
+        white calc(66.667% - 1.333px), 
+        transparent calc(66.667% - 1.333px), 
+        transparent calc(66.667% + 2.667px), 
+        white calc(66.667% + 2.667px), 
+        white 100%);
     animation: shimmer-100 2s infinite ease-in-out;
 }
 
@@ -201,7 +245,7 @@
         left: -40px;
     }
     100% { 
-        left: calc(30.5% + 10px);
+        left: calc(33.333% - 2.667px + 10px);
     }
 }
 
@@ -210,7 +254,7 @@
         left: -40px;
     }
     100% { 
-        left: calc(65.25% + 10px);
+        left: calc(66.667% - 1.333px + 10px);
     }
 }
 
