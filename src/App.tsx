@@ -67,16 +67,16 @@ function App() {
             Order Received
           </button>
           <button 
-            className={currentState === 'getting_results' ? 'active' : ''}
-            onClick={() => setCurrentState('getting_results')}
-          >
-            Getting Results
-          </button>
-          <button 
             className={currentState === 'ready_to_view' ? 'active' : ''}
             onClick={() => setCurrentState('ready_to_view')}
           >
             Ready to View
+          </button>
+          <button 
+            className={currentState === 'getting_results' ? 'active' : ''}
+            onClick={() => setCurrentState('getting_results')}
+          >
+            Getting Results
           </button>
         </div>
       </div>
