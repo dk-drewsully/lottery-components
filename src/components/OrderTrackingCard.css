@@ -141,22 +141,22 @@
     background: var(--color-progress-active);
 }
 
-/* Single smooth sheen effect that only appears on active segments */
+/* Enhanced sheen effect with better visibility on single segments */
 .progress-bar::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -60px;
+    left: -50px;
     height: 100%;
-    width: 60px;
+    width: 50px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.1) 20%,
-        rgba(255, 255, 255, 0.3) 40%,
-        rgba(255, 255, 255, 0.6) 50%,
-        rgba(255, 255, 255, 0.3) 60%,
-        rgba(255, 255, 255, 0.1) 80%,
+        rgba(255, 255, 255, 0.2) 15%,
+        rgba(255, 255, 255, 0.5) 35%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.5) 65%,
+        rgba(255, 255, 255, 0.2) 85%,
         transparent 100%
     );
     border-radius: var(--radius-sm);
@@ -181,7 +181,7 @@
         white calc((100% - 8px) / 3), 
         transparent calc((100% - 8px) / 3), 
         transparent 100%);
-    animation: shimmer-33 2.5s infinite ease-in-out;
+    animation: shimmer-33 2s infinite ease-in-out;
 }
 
 .progress-bar[data-progress="66"]::before {
@@ -240,57 +240,57 @@
 
 
 
-/* Animations that travel across only the active segments */
+/* Enhanced animations with better visibility and timing */
 @keyframes shimmer-33 {
     0% { 
-        left: -60px;
+        left: -50px;
         opacity: 0;
     }
-    10% {
+    5% {
         opacity: 1;
     }
-    90% {
+    95% {
         opacity: 1;
     }
     100% { 
         /* End at the end of first segment */
-        left: calc((100% - 8px) / 3 + 30px);
+        left: calc((100% - 8px) / 3 + 25px);
         opacity: 0;
     }
 }
 
 @keyframes shimmer-66 {
     0% { 
-        left: -60px;
+        left: -50px;
         opacity: 0;
     }
-    10% {
+    5% {
         opacity: 1;
     }
-    90% {
+    95% {
         opacity: 1;
     }
     100% { 
         /* End at the end of second segment */
-        left: calc(2 * (100% - 8px) / 3 + 4px + 30px);
+        left: calc(2 * (100% - 8px) / 3 + 4px + 25px);
         opacity: 0;
     }
 }
 
 @keyframes shimmer-100 {
     0% { 
-        left: -60px;
+        left: -50px;
         opacity: 0;
     }
-    10% {
+    5% {
         opacity: 1;
     }
-    90% {
+    95% {
         opacity: 1;
     }
     100% { 
         /* End at the end of third segment */
-        left: calc(100% + 30px);
+        left: calc(100% + 25px);
         opacity: 0;
     }
 }
