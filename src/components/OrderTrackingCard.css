@@ -139,20 +139,18 @@
 
 
 
-/* Smooth consistent sheen effect applied directly to active segments */
 .progress-segment.active {
     background: var(--color-progress-active);
-    position: relative;
-    overflow: hidden;
 }
 
-.progress-segment.active::before {
+/* Single continuous sheen that spans across all active segments */
+.progress-bar::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -40px;
+    left: -50px;
     height: 100%;
-    width: 40px;
+    width: 50px;
     background: linear-gradient(
         90deg,
         transparent 0%,
@@ -163,29 +161,56 @@
     );
     border-radius: var(--radius-sm);
     pointer-events: none;
-    z-index: 1;
-    animation: segment-shimmer 2.5s infinite ease-in-out;
+    z-index: var(--z-overlay);
+    /* Only show when there are active segments */
+    display: none;
+}
+
+/* Show sheen with different travel distances based on progress */
+.progress-bar[data-progress="33"]::before {
+    display: block;
+    animation: sheen-33 2.5s infinite ease-in-out;
+}
+
+.progress-bar[data-progress="66"]::before {
+    display: block;
+    animation: sheen-66 2.5s infinite ease-in-out;
+}
+
+.progress-bar[data-progress="100"]::before {
+    display: block;
+    animation: sheen-100 2.5s infinite ease-in-out;
 }
 
 
 
 
 
-/* Smooth consistent animation for individual segments */
-@keyframes segment-shimmer {
+/* Simple continuous sheen animations for different progress states */
+@keyframes sheen-33 {
     0% { 
-        left: -40px;
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
+        left: -50px;
     }
     100% { 
-        left: calc(100% + 20px);
-        opacity: 0;
+        left: calc(33.33% - 8px);
+    }
+}
+
+@keyframes sheen-66 {
+    0% { 
+        left: -50px;
+    }
+    100% { 
+        left: calc(66.67% - 4px);
+    }
+}
+
+@keyframes sheen-100 {
+    0% { 
+        left: -50px;
+    }
+    100% { 
+        left: calc(100% + 25px);
     }
 }
 
