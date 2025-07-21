@@ -161,18 +161,21 @@
     animation: continuous-shimmer 2s infinite ease-in-out;
     pointer-events: none;
     z-index: var(--z-overlay);
+    /* Hide sheen by default - only show on specific progress states */
+    display: none;
 }
 
-/* Shimmer masking for different progress states - only visible on filled segments */
+/* Shimmer visibility and masking for specific progress states only */
 .progress-bar[data-progress="33"]::before {
-    /* First segment only */
+    /* Show sheen and mask to first segment only */
+    display: block;
     mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
     -webkit-mask: linear-gradient(90deg, white 0%, white 30.5%, transparent 30.5%, transparent 100%);
 }
 
-.progress-bar[data-progress="66"]::before,
-.progress-bar[data-progress="67"]::before {
-    /* First and second segments with gap */
+.progress-bar[data-progress="66"]::before {
+    /* Show sheen and mask to first and second segments with gap */
+    display: block;
     mask: linear-gradient(90deg, 
         white 0%, white 30.5%, 
         transparent 30.5%, transparent 34.75%, 
@@ -185,9 +188,9 @@
         transparent 65.25%, transparent 100%);
 }
 
-.progress-bar[data-progress="90"]::before,
 .progress-bar[data-progress="100"]::before {
-    /* All three segments with gaps */
+    /* Show sheen and mask to all three segments with gaps */
+    display: block;
     mask: linear-gradient(90deg, 
         white 0%, white 30.5%, 
         transparent 30.5%, transparent 34.75%, 
