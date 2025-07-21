@@ -26,7 +26,7 @@ const orderStates: Record<string, LotteryOrder> = {
     status: {
       stage: 'ready_to_view',
       message: 'Results are ready to view',
-      progress: 67
+      progress: 66
     }
   },
   getting_results: {
