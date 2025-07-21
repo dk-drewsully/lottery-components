@@ -137,160 +137,54 @@
     border-radius: var(--radius-sm);
 }
 
+
+
+/* Smooth consistent sheen effect applied directly to active segments */
 .progress-segment.active {
     background: var(--color-progress-active);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Enhanced sheen effect with better visibility on single segments */
-.progress-bar::before {
+.progress-segment.active::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -50px;
+    left: -40px;
     height: 100%;
-    width: 50px;
+    width: 40px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255, 255, 255, 0.2) 15%,
-        rgba(255, 255, 255, 0.5) 35%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(255, 255, 255, 0.5) 65%,
-        rgba(255, 255, 255, 0.2) 85%,
+        rgba(255, 255, 255, 0.15) 25%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
         transparent 100%
     );
     border-radius: var(--radius-sm);
     pointer-events: none;
-    z-index: var(--z-overlay);
-    /* Hidden by default */
-    display: none;
-}
-
-/* Precise masking to only show sheen on active segments */
-.progress-bar[data-progress="33"]::before {
-    /* Show sheen only on first segment */
-    display: block;
-    /* Mask to exactly match first segment: 0% to calc((100% - 8px) / 3) */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent 100%);
-    animation: shimmer-33 2s infinite ease-in-out;
-}
-
-.progress-bar[data-progress="66"]::before {
-    /* Show sheen only on first and second segments */
-    display: block;
-    /* Mask to match first segment + gap + second segment */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3 + 4px), 
-        white calc((100% - 8px) / 3 + 4px), 
-        white calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3 + 4px), 
-        white calc((100% - 8px) / 3 + 4px), 
-        white calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent 100%);
-    animation: shimmer-66 2.5s infinite ease-in-out;
-}
-
-.progress-bar[data-progress="100"]::before {
-    /* Show sheen on all three segments */
-    display: block;
-    /* Mask to match all three segments with gaps */
-    mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3 + 4px), 
-        white calc((100% - 8px) / 3 + 4px), 
-        white calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 8px), 
-        white calc(2 * (100% - 8px) / 3 + 8px), 
-        white 100%);
-    -webkit-mask: linear-gradient(90deg, 
-        white 0%, 
-        white calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3), 
-        transparent calc((100% - 8px) / 3 + 4px), 
-        white calc((100% - 8px) / 3 + 4px), 
-        white calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 4px), 
-        transparent calc(2 * (100% - 8px) / 3 + 8px), 
-        white calc(2 * (100% - 8px) / 3 + 8px), 
-        white 100%);
-    animation: shimmer-100 2.5s infinite ease-in-out;
+    z-index: 1;
+    animation: segment-shimmer 2.5s infinite ease-in-out;
 }
 
 
 
-/* Enhanced animations with better visibility and timing */
-@keyframes shimmer-33 {
+
+
+/* Smooth consistent animation for individual segments */
+@keyframes segment-shimmer {
     0% { 
-        left: -50px;
+        left: -40px;
         opacity: 0;
     }
-    5% {
+    10% {
         opacity: 1;
     }
-    95% {
+    90% {
         opacity: 1;
     }
     100% { 
-        /* End at the end of first segment */
-        left: calc((100% - 8px) / 3 + 25px);
-        opacity: 0;
-    }
-}
-
-@keyframes shimmer-66 {
-    0% { 
-        left: -50px;
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    95% {
-        opacity: 1;
-    }
-    100% { 
-        /* End at the end of second segment */
-        left: calc(2 * (100% - 8px) / 3 + 4px + 25px);
-        opacity: 0;
-    }
-}
-
-@keyframes shimmer-100 {
-    0% { 
-        left: -50px;
-        opacity: 0;
-    }
-    5% {
-        opacity: 1;
-    }
-    95% {
-        opacity: 1;
-    }
-    100% { 
-        /* End at the end of third segment */
-        left: calc(100% + 25px);
+        left: calc(100% + 20px);
         opacity: 0;
     }
 }
