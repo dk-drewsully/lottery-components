@@ -72,6 +72,33 @@ export const OrderTrackingCard: React.FC<OrderTrackingCardProps> = ({
             </g>
           </svg>
         );
+      case 'winner':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" className="winner-icon">
+            <circle cx="12" cy="12" r="10" fill="#22C55E"/>
+            <path 
+              d="M8 12L11 15L16 9" 
+              stroke="white" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+            <circle cx="12" cy="12" r="10" stroke="#22C55E" strokeWidth="2" fill="none" opacity="0.3"/>
+          </svg>
+        );
+      case 'not_winner':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" className="not-winner-icon">
+            <circle cx="12" cy="12" r="10" fill="#6B7280"/>
+            <path 
+              d="M12 8V12M12 16H12.01" 
+              stroke="white" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
+        );
       default:
         return (
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -115,7 +142,9 @@ export const OrderTrackingCard: React.FC<OrderTrackingCardProps> = ({
           <div className="status-icon">
             {getStatusIcon()}
           </div>
-          <span className="status-text">{order.status.message}</span>
+          <span className={`status-text ${order.status.stage === 'winner' ? 'status-winner' : ''} ${order.status.stage === 'not_winner' ? 'status-not-winner' : ''}`}>
+            {order.status.message}
+          </span>
         </div>
         <div className="progress-bar" data-progress={order.status.progress}>
           {getProgressSegments()}
