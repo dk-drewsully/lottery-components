@@ -37,26 +37,19 @@ const orderStates: Record<string, LotteryOrder> = {
       progress: 100
     }
   },
-  winner: {
+  won: {
     ...baseOrder,
     status: {
-      stage: 'winner',
-      message: 'Congratulations! You won $2,500',
+      stage: 'won',
+      message: 'Won!',
       progress: 100
-    }
-  },
-  not_winner: {
-    ...baseOrder,
-    status: {
-      stage: 'not_winner',
-      message: 'No winning numbers this time',
-      progress: 100
-    }
+    },
+    winAmount: 2.00
   }
 };
 
 function App() {
-  const [currentState, setCurrentState] = useState<'received' | 'ready_to_view' | 'getting_results' | 'winner' | 'not_winner'>('received');
+  const [currentState, setCurrentState] = useState<'received' | 'ready_to_view' | 'getting_results' | 'won'>('received');
 
   const handleDetailsClick = (orderId: string) => {
     console.log('Details clicked for order:', orderId);
@@ -95,19 +88,13 @@ function App() {
             Getting Results
           </button>
           <button 
-            className={currentState === 'winner' ? 'active' : ''}
-            onClick={() => setCurrentState('winner')}
+            className={currentState === 'won' ? 'active' : ''}
+            onClick={() => setCurrentState('won')}
           >
-            🎉 Winner
-          </button>
-          <button 
-            className={currentState === 'not_winner' ? 'active' : ''}
-            onClick={() => setCurrentState('not_winner')}
-          >
-            Not Winner
+            Won
           </button>
         </div>
-              </div>
+      </div>
 
       {/* Component Demo */}
       <OrderTrackingCard

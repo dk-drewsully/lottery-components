@@ -5,10 +5,11 @@ export interface LotteryOrder {
   totalAmount: number;
   numberOfPlays: number;
   status: OrderStatus;
+  winAmount?: number;
 }
 
 export interface OrderStatus {
-  stage: 'received' | 'ready_to_view' | 'getting_results' | 'winner' | 'not_winner';
+  stage: 'received' | 'ready_to_view' | 'getting_results' | 'won';
   message: string;
   progress: number; // 0-100
 }

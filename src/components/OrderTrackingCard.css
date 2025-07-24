@@ -122,29 +122,9 @@
     line-height: var(--text-emphasis-02-line-height);
 }
 
-/* Winner and Not Winner Status Styling */
-.status-text.status-winner {
-  color: var(--color-winner-green);
-}
-
-.status-text.status-not-winner {
-  color: var(--color-not-winner-gray);
-}
-
-/* Winner icon subtle pulse animation */
-.winner-icon {
-  animation: pulse-success 2s ease-in-out infinite;
-}
-
-@keyframes pulse-success {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.9;
-  }
+.status-text.won {
+  color: #1B9E7A;
+  font-weight: 600;
 }
 
 /* Progress Bar - Enhanced with Design System */
@@ -375,10 +355,6 @@
   .action-btn {
     animation: none !important;
     transition: none !important;
-  }
-  
-  .winner-icon {
-    animation: none !important;
   }
 }
 
