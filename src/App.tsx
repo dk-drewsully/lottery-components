@@ -57,8 +57,8 @@ function App() {
   };
 
   const handlePlayMoreClick = () => {
-    console.log('Play More clicked');
-    // Navigate to new order flow
+    console.log('Reorder clicked');
+    // Navigate to reorder flow
   };
 
   return (

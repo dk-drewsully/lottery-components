@@ -151,7 +151,7 @@ export const OrderTrackingCard: React.FC<OrderTrackingCardProps> = ({
           onClick={onPlayMoreClick}
           type="button"
         >
-          Play More
+          Reorder
         </button>
       </div>
     </div>
