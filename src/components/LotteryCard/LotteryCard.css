@@ -1,0 +1,152 @@
+/**
+ * LotteryCard Component Styles
+ * Reference implementation for native mobile platforms
+ */
+
+.lottery-card {
+  /* Layout
+   * iOS: UIStackView with vertical axis
+   * Android: LinearLayout (vertical) or Column in Compose
+   */
+  display: flex;
+  flex-direction: column;
+  
+  /* Dimensions
+   * iOS: Fixed width with auto margins
+   * Android: match_parent width with horizontal margins
+   * Note: 343px is optimal for iPhone SE to Pro Max
+   */
+  width: 343px;
+  margin: var(--space-5) auto;
+  
+  /* Visual Properties
+   * iOS: UIView with cornerRadius and shadow
+   * Android: MaterialCardView or Card in Compose
+   */
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.lottery-card__header {
+  /* Layout
+   * iOS: UIStackView with horizontal axis
+   * Android: LinearLayout (horizontal) or Row in Compose
+   */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+}
+
+.lottery-card__title {
+  /* Typography
+   * iOS: UILabel with system font
+   * Android: TextView with textAppearance.headline6
+   */
+  margin: 0;
+  color: var(--brand-primary);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.lottery-card__id {
+  /* Typography
+   * iOS: UILabel with caption style
+   * Android: TextView with textAppearance.caption
+   */
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.lottery-card__status {
+  /* Container
+   * iOS: UIView with top/bottom borders
+   * Android: LinearLayout with dividers
+   */
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid #E7EDF2;
+  border-bottom: 1px solid #E7EDF2;
+}
+
+.lottery-card__status-icon {
+  /* Icon Container
+   * iOS: UIImageView container
+   * Android: ImageView container
+   */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.lottery-card__icon {
+  /* Icon styling
+   * iOS: Apply tintColor to UIImageView
+   * Android: Apply ColorFilter to ImageView
+   */
+  transition: transform var(--anim-normal);
+}
+
+.lottery-card__icon:hover {
+  transform: scale(1.1);
+}
+
+.lottery-card__status-text {
+  /* Status Text
+   * iOS: UILabel with body style
+   * Android: TextView with textAppearance.body1
+   */
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.lottery-card__status-text--winning {
+  /* Winning State Text
+   * iOS: UILabel with custom color
+   * Android: TextView with custom textColor
+   */
+  color: var(--status-success);
+  font-weight: 600;
+}
+
+.lottery-card__progress {
+  /* Progress Indicator
+   * iOS: Custom UIProgressView
+   * Android: Custom ProgressBar or LinearProgressIndicator
+   */
+  display: flex;
+  gap: var(--space-1);
+  height: var(--space-1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Money Bag Icon Specific Styles */
+.money-bag-icon {
+  /* Icon Animation
+   * iOS: Add CABasicAnimation to layer
+   * Android: Use ObjectAnimator or Compose animation
+   */
+  transition: all var(--anim-normal);
+}
+
+.money-bag-icon:hover {
+  transform: scale(1.05) rotate(5deg);
+}
+
+/* Responsive Layout
+ * iOS: Use AutoLayout constraints
+ * Android: Use ConstraintLayout or responsive Compose layout
+ */
+@media (max-width: 375px) {
+  .lottery-card {
+    width: calc(100% - var(--space-4) * 2);
+    margin: var(--space-4) auto;
+  }
+} 

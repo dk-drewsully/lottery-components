@@ -1,0 +1,102 @@
+/**
+ * Lottery App Design Tokens
+ * Reference implementation for native mobile platforms
+ * 
+ * USAGE:
+ * iOS: Use as reference for UIKit implementations
+ * Android: Use as reference for Material Design / Jetpack Compose implementations
+ */
+
+:root {
+  /**
+   * Brand Colors
+   * 
+   * iOS: UIColor
+   * Android: Color resource (@color) or MaterialTheme.colors
+   */
+  --brand-primary: #1976D2;      
+  --brand-pressed: #0056CC;      
+  --brand-subtle: rgba(0, 122, 255, 0.1);
+
+  /**
+   * Text Colors
+   * 
+   * iOS: UILabel.textColor
+   * Android: android:textColor or MaterialTheme.typography
+   */
+  --text-primary: #131415;       /* Primary content */
+  --text-secondary: #63707B;     /* Supporting text */
+  --text-subdued: #8B8B8B;       /* Disabled/inactive text */
+
+  /**
+   * Status Colors
+   * 
+   * iOS: UIView backgroundColor
+   * Android: android:background or Surface color
+   */
+  --status-success: #22C55E;     /* Winning state */
+  --status-success-pressed: #16A34A;
+  --status-neutral: #6B7280;     /* Non-winning state */
+  --status-neutral-pressed: #4B5563;
+
+  /**
+   * Spacing Scale (8pt grid)
+   * 
+   * iOS: CGFloat values for layout
+   * Android: dimension resources (dimen) in dp
+   */
+  --space-1: 4px;   /* 4dp - Dense spacing */
+  --space-2: 8px;   /* 8dp - Default spacing */
+  --space-3: 12px;  /* 12dp - Internal padding */
+  --space-4: 16px;  /* 16dp - Standard margin */
+  --space-5: 20px;  /* 20dp - Section spacing */
+  --space-6: 24px;  /* 24dp - Screen margins */
+
+  /**
+   * Border Radius
+   * 
+   * iOS: layer.cornerRadius
+   * Android: android:cornerRadius or shape resource
+   */
+  --radius-sm: 4px;   /* Small components */
+  --radius-md: 8px;   /* Buttons, cards */
+  --radius-lg: 12px;  /* Large surfaces */
+
+  /**
+   * Elevation/Shadow
+   * 
+   * iOS: 
+   *   layer.shadowColor
+   *   layer.shadowOffset
+   *   layer.shadowRadius
+   *   layer.shadowOpacity
+   * 
+   * Android:
+   *   android:elevation
+   *   or MaterialTheme.shapes with elevation
+   */
+  --shadow-1: 0px 1px 2px rgba(0, 0, 0, 0.04);  /* Low elevation */
+  --shadow-2: 0px 2px 4px rgba(0, 0, 0, 0.08);  /* Medium elevation */
+  --shadow-3: 0px 4px 8px rgba(0, 0, 0, 0.12);  /* High elevation */
+
+  /**
+   * Animation Timing
+   * 
+   * iOS: UIView.animate duration
+   * Android: android:duration or AnimationSpec
+   */
+  --anim-quick: 150ms;    /* Micro-interactions */
+  --anim-normal: 200ms;   /* Standard transitions */
+  --anim-slow: 300ms;     /* Emphasis */
+
+  /**
+   * Z-Index / Elevation
+   * 
+   * iOS: UIView.layer.zPosition
+   * Android: android:elevation or zIndex in Compose
+   */
+  --z-base: 0;      /* Base elements */
+  --z-raised: 1;    /* Elevated elements */
+  --z-overlay: 2;   /* Overlays, sheets */
+  --z-modal: 3;     /* Modal dialogs */
+} 

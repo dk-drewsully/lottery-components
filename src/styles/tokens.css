@@ -1,0 +1,56 @@
+/**
+ * Lottery App Design Tokens
+ * These values should be used as reference for iOS implementation
+ */
+
+:root {
+  /**
+   * Colors
+   * Use semantic naming to match iOS usage
+   */
+  --lottery-brand: #1976D2;          /* Primary brand color */
+  --lottery-brand-pressed: #0056CC;   /* Used for pressed states */
+  --lottery-brand-subtle: rgba(0, 122, 255, 0.1); /* Used for backgrounds */
+  
+  /* Text colors map to iOS text styles */
+  --text-primary: #131415;    /* UILabel.textColor default */
+  --text-secondary: #63707B;  /* Secondary information */
+  --text-subdued: #8B8B8B;    /* Tertiary information */
+  
+  /* Status colors for game states */
+  --status-win: #22C55E;      /* Winning state */
+  --status-win-pressed: #16A34A;
+  --status-lose: #6B7280;     /* Non-winning state */
+  --status-lose-pressed: #4B5563;
+  
+  /**
+   * Spacing
+   * Based on 8pt grid, matches iOS standard
+   */
+  --spacing-1: 4px;   /* UIStackView spacing min */
+  --spacing-2: 8px;   /* Standard padding */
+  --spacing-3: 12px;  /* Content padding */
+  --spacing-4: 16px;  /* Large padding */
+  --spacing-5: 20px;  /* Section spacing */
+  --spacing-6: 24px;  /* Screen margins */
+  
+  /**
+   * Border Radius
+   * Maps to iOS corner radius values
+   */
+  --radius-sm: 4px;   /* Small components */
+  --radius-md: 8px;   /* Buttons */
+  --radius-lg: 12px;  /* Cards */
+  
+  /**
+   * Shadows
+   * Convert to iOS CALayer shadow properties
+   */
+  --shadow-card: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  /* iOS equivalent:
+   * layer.shadowColor = UIColor.black.cgColor
+   * layer.shadowOpacity = 0.08
+   * layer.shadowOffset = CGSize(width: 0, height: 2)
+   * layer.shadowRadius = 4
+   */
+} 

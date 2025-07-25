@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Component Styles
+   ========================================================================== */
+
+/* Order Card */
+.order-card {
+  display: flex;
+  flex-direction: column;
+  width: 343px;  /* iPhone 8+ width - 16px * 2 (edge margins) */
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-xl) auto;
+  overflow: hidden;
+  font-family: var(--font-family-primary);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-sm);
+}
+
+/* Status Section */
+.status-section {
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  border-top: 1px solid var(--color-border-default);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+/* Progress Bar */
+.progress-bar {
+  display: flex;
+  gap: var(--spacing-xs);
+  height: var(--spacing-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .card {
+    margin: var(--spacing-md);
+    width: calc(100% - calc(var(--spacing-md) * 2));
+  }
+}
+
+/* Accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-default: #000000;
+    --color-text-secondary: #000000;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} 
