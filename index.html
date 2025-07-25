@@ -8,19 +8,17 @@
     <script type="module" crossorigin src="/lottery-components/assets/index-DD4F0O56.js"></script>
     <link rel="stylesheet" crossorigin href="/lottery-components/assets/index-CKZsMt7O.css">
     <style>
-      /* Simple Money Bag Icon Override */
-      .status-icon svg {
-          visibility: hidden !important;
+      /* Money Bag Icon Fix - Only for Won State */
+      /* Target only won state by finding the specific SVG path */
+      .status-icon svg path[d*="M7.58333"] {
+          display: none !important;
       }
       
-      .status-icon {
+      .status-icon:has(svg path[d*="M7.58333"]) {
           position: relative !important;
-          display: inline-block !important;
-          width: 16px !important;
-          height: 16px !important;
       }
       
-      .status-icon::before {
+      .status-icon:has(svg path[d*="M7.58333"])::before {
           content: '';
           position: absolute;
           top: 0;
