@@ -1,14 +1,281 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order Status - Lottery Components</title>
-    <script type="module" crossorigin src="/lottery-components/assets/index-DD4F0O56.js"></script>
-    <link rel="stylesheet" crossorigin href="/lottery-components/assets/index-CKZsMt7O.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottery Components - Reference Implementation</title>
+    <style>
+        /* Design Tokens */
+        :root {
+            --brand-primary: #1976D2;
+            --text-primary: #131415;
+            --text-secondary: #63707B;
+            --status-success: #1B9E7A;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-6: 24px;
+            --radius-lg: 12px;
+            --shadow-2: 0px 2px 4px rgba(0, 0, 0, 0.08);
+            --font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, sans-serif;
+        }
+
+        /* App Styles */
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family-primary);
+            background: #F8F9FA;
+            min-height: 100vh;
+        }
+
+        .app {
+            padding: var(--space-6);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 var(--space-2) 0;
+        }
+
+        .app-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
+            gap: var(--space-4);
+            justify-items: center;
+            margin-bottom: var(--space-6);
+        }
+
+        /* Lottery Card */
+        .lottery-card {
+            display: flex;
+            flex-direction: column;
+            width: 343px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2);
+            overflow: hidden;
+            font-family: var(--font-family-primary);
+        }
+
+        .lottery-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: var(--space-3) var(--space-4) var(--space-2);
+        }
+
+        .lottery-card__title {
+            margin: 0;
+            color: var(--brand-primary);
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        .lottery-card__id {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .lottery-card__status {
+            padding: var(--space-3) var(--space-4);
+            border-top: 1px solid #E7EDF2;
+            border-bottom: 1px solid #E7EDF2;
+        }
+
+        .lottery-card__status-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-2);
+        }
+
+        .lottery-card__status-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: var(--space-2);
+        }
+
+        .lottery-card__status-text--winning {
+            color: var(--status-success);
+            font-weight: 600;
+        }
+
+        .money-bag-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .money-bag-icon:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        /* Implementation Notes */
+        .implementation-notes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .note-card {
+            background: white;
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .note-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--brand-primary);
+            margin: 0 0 var(--space-3) 0;
+        }
+
+        .note-card ul {
+            margin: 0;
+            padding-left: var(--space-4);
+        }
+
+        .note-card li {
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .app { padding: var(--space-4); }
+            .app-title { font-size: 2rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .implementation-notes { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="app-header">
+            <h1 class="app-title">Lottery Components</h1>
+            <p class="app-subtitle">Reference implementation for iOS and Android</p>
+        </div>
+
+        <div class="components-showcase">
+            <section class="showcase-section">
+                <h2 class="section-title">Lottery Card States</h2>
+                
+                <div class="cards-grid">
+                    <!-- Won State -->
+                    <div class="lottery-card">
+                        <div class="lottery-card__header">
+                            <h2 class="lottery-card__title">Lottery Ticket</h2>
+                            <span class="lottery-card__id">LT001</span>
+                        </div>
+                        <div class="lottery-card__status">
+                            <div class="lottery-card__status-icon">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="money-bag-icon">
+                                    <path d="M9.75 2.625H6.25L4.95391 0.680859C4.75977 0.388281 4.96758 0 5.31758 0H10.6824C11.0324 0 11.2402 0.388281 11.0461 0.680859L9.75 2.625ZM6.25 3.5H9.75C9.85391 3.56836 9.97148 3.64492 10.1055 3.72969C11.6559 4.72227 15 6.86055 15 11.375C15 12.8242 13.8242 14 12.375 14H3.625C2.17578 14 1 12.8242 1 11.375C1 6.86055 4.34414 4.72227 5.89453 3.72969C6.02578 3.64492 6.14609 3.56836 6.25 3.5ZM8.54688 5.90625C8.54688 5.60547 8.30078 5.35938 8 5.35938C7.69922 5.35938 7.45312 5.60547 7.45312 5.90625V6.28906C7.24531 6.33555 7.0375 6.40938 6.84609 6.52148C6.46602 6.74844 6.13789 7.14492 6.14062 7.72187C6.14336 8.27695 6.46875 8.62695 6.81602 8.83477C7.1168 9.01523 7.49141 9.13008 7.78945 9.21758L7.83594 9.23125C8.18047 9.33516 8.43203 9.41719 8.60156 9.52383C8.74102 9.61133 8.76016 9.67148 8.76289 9.74805C8.76562 9.88477 8.71367 9.9668 8.60156 10.0352C8.46484 10.1199 8.24883 10.1719 8.01641 10.1637C7.71289 10.1527 7.42852 10.057 7.05664 9.93125C6.99375 9.90938 6.92812 9.8875 6.85977 9.86562C6.57266 9.76992 6.26367 9.92578 6.16797 10.2102C6.07227 10.4945 6.22813 10.8063 6.5125 10.902C6.56445 10.9184 6.62187 10.9375 6.6793 10.9594C6.90625 11.0387 7.16875 11.1289 7.45039 11.1891V11.5883C7.45039 11.8891 7.69648 12.1352 7.99727 12.1352C8.29805 12.1352 8.54414 11.8891 8.54414 11.5883V11.2109C8.76289 11.1645 8.98164 11.0879 9.17852 10.9648C9.56953 10.7215 9.86484 10.3059 9.85664 9.73438C9.84844 9.1793 9.53672 8.82109 9.18398 8.59688C8.86953 8.4 8.47578 8.27969 8.16953 8.18672L8.15039 8.18125C7.80039 8.07461 7.55156 7.99805 7.37656 7.89414C7.23438 7.80938 7.23164 7.76016 7.23164 7.71094C7.23164 7.60977 7.26992 7.5332 7.40117 7.45664C7.54883 7.36914 7.77305 7.31719 7.98906 7.31992C8.25156 7.32266 8.54141 7.38008 8.84219 7.46211C9.13477 7.53867 9.43281 7.36641 9.51211 7.07383C9.59141 6.78125 9.41641 6.4832 9.12383 6.40391C8.94609 6.35742 8.74922 6.31094 8.54688 6.27539V5.89531V5.90625Z" fill="#1B9E7A"/>
+                                </svg>
+                            </div>
+                            <div class="lottery-card__status-text lottery-card__status-text--winning">
+                                Won
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other states for comparison -->
+                    <div class="lottery-card">
+                        <div class="lottery-card__header">
+                            <h2 class="lottery-card__title">Lottery Ticket</h2>
+                            <span class="lottery-card__id">LT002</span>
+                        </div>
+                        <div class="lottery-card__status">
+                            <div class="lottery-card__status-text">
+                                Lost
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lottery-card">
+                        <div class="lottery-card__header">
+                            <h2 class="lottery-card__title">Lottery Ticket</h2>
+                            <span class="lottery-card__id">LT003</span>
+                        </div>
+                        <div class="lottery-card__status">
+                            <div class="lottery-card__status-text">
+                                Pending
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lottery-card">
+                        <div class="lottery-card__header">
+                            <h2 class="lottery-card__title">Lottery Ticket</h2>
+                            <span class="lottery-card__id">LT004</span>
+                        </div>
+                        <div class="lottery-card__status">
+                            <div class="lottery-card__status-text">
+                                Checking
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="showcase-section">
+                <h2 class="section-title">Implementation Notes</h2>
+                <div class="implementation-notes">
+                    <div class="note-card">
+                        <h3>iOS Implementation</h3>
+                        <ul>
+                            <li>Use UIStackView for layout</li>
+                            <li>Apply corner radius and shadow</li>
+                            <li>Use SF Symbols for icons</li>
+                            <li>Follow Human Interface Guidelines</li>
+                            <li>Money bag icon: SF Symbol "bag.fill" with green tint</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note-card">
+                        <h3>Android Implementation</h3>
+                        <ul>
+                            <li>Use MaterialCardView or Card in Compose</li>
+                            <li>Apply Material Design elevation</li>
+                            <li>Use Material Icons or vector drawables</li>
+                            <li>Follow Material Design Guidelines</li>
+                            <li>Money bag icon: Custom vector drawable with green color</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
 </html> 
