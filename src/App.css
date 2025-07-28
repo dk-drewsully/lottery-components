@@ -1,26 +1,32 @@
-/* App Styles */
+/* ==========================================================================
+   APP LAYOUT & SHOWCASE STYLES
+   ========================================================================== */
+
 .app {
   min-height: 100vh;
-  background: var(--color-bg-secondary, #F8F9FA);
-  padding: var(--space-6, 24px);
-  font-family: var(--font-family-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, sans-serif);
+  background: var(--color-bg-dark);
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: var(--space-6, 24px);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .app-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-primary, #131415);
-  margin: 0 0 var(--space-2, 8px) 0;
+  color: var(--color-text-on-dark);
+  margin: 0 0 var(--spacing-sm) 0;
 }
 
 .app-subtitle {
   font-size: 1.1rem;
-  color: var(--text-secondary, #63707B);
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
@@ -30,62 +36,65 @@
 }
 
 .showcase-section {
-  margin-bottom: var(--space-6, 24px);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .section-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary, #131415);
-  margin-bottom: var(--space-4, 16px);
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--spacing-lg);
   text-align: center;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
-  gap: var(--space-4, 16px);
+  gap: var(--spacing-lg);
   justify-items: center;
-  margin-bottom: var(--space-6, 24px);
+  margin-bottom: var(--spacing-2xl);
 }
 
 .implementation-notes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-4, 16px);
+  gap: var(--spacing-lg);
   max-width: 800px;
   margin: 0 auto;
 }
 
 .note-card {
-  background: white;
-  padding: var(--space-4, 16px);
-  border-radius: var(--radius-lg, 12px);
-  box-shadow: var(--shadow-1, 0px 1px 2px rgba(0, 0, 0, 0.04));
+  background: var(--color-bg-primary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .note-card h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--brand-primary, #1976D2);
-  margin: 0 0 var(--space-3, 12px) 0;
+  color: var(--color-brand-primary);
+  margin: 0 0 var(--spacing-md) 0;
 }
 
 .note-card ul {
   margin: 0;
-  padding-left: var(--space-4, 16px);
+  padding-left: var(--spacing-lg);
 }
 
 .note-card li {
-  color: var(--text-primary, #131415);
-  margin-bottom: var(--space-1, 4px);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
   line-height: 1.5;
 }
 
-/* Responsive Design */
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .app {
-    padding: var(--space-4, 16px);
+    padding: var(--spacing-lg);
   }
   
   .app-title {
@@ -99,15 +108,4 @@
   .implementation-notes {
     grid-template-columns: 1fr;
   }
-}
-
-/* Reset styles */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", roboto, sans-serif);
 } 
