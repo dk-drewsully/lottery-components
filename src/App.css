@@ -4,29 +4,27 @@
 
 .app {
   min-height: 100vh;
-  background: var(--color-bg-dark);
-  padding: var(--spacing-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: #F8F9FA;
+  padding: var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--space-6);
 }
 
 .app-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--color-text-on-dark);
-  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
 }
 
 .app-subtitle {
   font-size: 1.1rem;
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -36,55 +34,55 @@
 }
 
 .showcase-section {
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--space-6);
 }
 
 .section-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-text-on-dark);
-  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
   text-align: center;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(343px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-4);
   justify-items: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--space-6);
 }
 
 .implementation-notes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-lg);
+  gap: var(--space-4);
   max-width: 800px;
   margin: 0 auto;
 }
 
 .note-card {
-  background: var(--color-bg-primary);
-  padding: var(--spacing-lg);
+  background: white;
+  padding: var(--space-4);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-2);
 }
 
 .note-card h3 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--color-brand-primary);
-  margin: 0 0 var(--spacing-md) 0;
+  color: var(--brand-primary);
+  margin: 0 0 var(--space-3) 0;
 }
 
 .note-card ul {
   margin: 0;
-  padding-left: var(--spacing-lg);
+  padding-left: var(--space-4);
 }
 
 .note-card li {
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-xs);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
   line-height: 1.5;
 }
 
@@ -94,17 +92,14 @@
 
 @media (max-width: 768px) {
   .app {
-    padding: var(--spacing-lg);
+    padding: var(--space-4);
   }
   
   .app-title {
     font-size: 2rem;
   }
   
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-  
+  .cards-grid,
   .implementation-notes {
     grid-template-columns: 1fr;
   }
